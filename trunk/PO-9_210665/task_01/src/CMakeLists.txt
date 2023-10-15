@@ -45,7 +45,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(PERVOLABCMAKE PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(po9_210665_task_01 PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
 set_target_properties(po9_210665_task_01 PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
