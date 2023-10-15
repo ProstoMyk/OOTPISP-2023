@@ -60,5 +60,5 @@ install(TARGETS PERVOLABCMAKE
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 if(QT_VERSION_MAJOR EQUAL 6)
-    qt_finalize_executable(PERVOLABCMAKE)
+    qt_finalize_executable(po9_210665_task_01)
 endif()
