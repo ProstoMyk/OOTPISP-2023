@@ -9,12 +9,12 @@
 #include "QSize"
 #include "QStyle"
 #include "QCommonStyle"
-#include "QFormLayout"
-#include "QPlainTextEdit"
-#include "QFileDialog"
-#include "QFile"
-#include "QString"
-#include "QByteArray"
+#include <QFormLayout>
+#include <QPlainTextEdit>
+#include <QFileDialog>
+#include <QFile>
+#include <QString>
+#include <QByteArray>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class gg; }
@@ -27,12 +27,13 @@ class gg : public QMainWindow
 public:
     gg(QWidget *parent = nullptr);
     ~gg();
-    QPushButton *but;
 
-    QPlainTextEdit* txtEdit;
 
 private:
     Ui::gg *ui;
+    QPushButton *but;
+
+    QPlainTextEdit* txtEdit;
 
 public slots:
     void Otkr();
