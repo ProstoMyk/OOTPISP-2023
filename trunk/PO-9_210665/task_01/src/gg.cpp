@@ -28,7 +28,7 @@ gg::gg(QWidget *parent)
     v_box_layout4->addWidget(txtEdit);
 
     this->resize(450, 200);
-    this->setWindowTitle("Huiii");
+    this->setWindowTitle("task_01");
 
     connect(but, &QPushButton::clicked, this, &gg::Otkr);
 

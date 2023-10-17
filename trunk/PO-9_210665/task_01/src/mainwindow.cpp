@@ -62,7 +62,7 @@ MainWindow::MainWindow(QWidget *parent)
     layout4->addWidget(txtEdit);
 
     this->resize(450, 200);
-    this->setWindowTitle("Huiii");
+    this->setWindowTitle("task_01");
 
     connect(sl1, &QSlider::valueChanged, this, &MainWindow::setRed);
     connect(sl2, &QSlider::valueChanged, this, &MainWindow::setGreen);
