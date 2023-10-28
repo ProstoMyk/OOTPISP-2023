@@ -1,4 +1,4 @@
-#include "texteditor.h"
+#include "Textid.h"
 #include "ui_texteditor.h"
 
 TextEditor::TextEditor(const QString &fil, QWidget *parent)
@@ -23,8 +23,8 @@ TextEditor::TextEditor(const QString &fil, QWidget *parent)
     connect(ui->textEdit, SIGNAL(copyAvailable(bool)), ui->actionCut, SLOT(setEnabled(bool)));
     connect(ui->textEdit, SIGNAL(undoAvailable(bool)), ui->actionUndo, SLOT(setEnabled(bool)));
     connect(ui->textEdit, SIGNAL(redoAvailable(bool)), ui->actionRedo, SLOT(setEnabled(bool)));
-    connect(ui->actionSave, SIGNAL(triggered()), this, SLOT(saveFile()));
-    connect(ui->actionSaveAs, SIGNAL(triggered()), this, SLOT(saveFileAs()));
+    connect(ui->actionSave, SIGNAL(triggered()), this, SLOT(svFl()));
+    connect(ui->actionSaveAs, SIGNAL(triggered()), this, SLOT(svFlAs()));
 
     ui->actionCopy->setEnabled(false);
     ui->actionCut->setEnabled(false);
@@ -33,7 +33,7 @@ TextEditor::TextEditor(const QString &fil, QWidget *parent)
 
     setAttribute(Qt::WA_DeleteOnClose);
 
-    loadFile(fil);
+    lida(fil);
 }
 
 TextEditor::~TextEditor()
@@ -63,7 +63,7 @@ void TextEditor::closeEvent(QCloseEvent *eve){
                                      QMessageBox::Cancel))
         {
         case QMessageBox::Yes:
-            saveFile();
+            svFl();
             break;
         case QMessageBox::No:
             eve->accept();
@@ -96,7 +96,7 @@ void TextEditor::on_actionSelectFont_triggered()
 
 
 
-void TextEditor::loadFile(const QString &fil){
+void TextEditor::lida(const QString &fil){
     if (fil.isEmpty()){
         setFileName(QString());
         return;
@@ -117,10 +117,10 @@ void TextEditor::loadFile(const QString &fil){
     setWindowModified(false);
 }
 
-void TextEditor::setFileName(const QString &fil){
-    m_fileName = fil;
+void TextEditor::setfila(const QString &fil){
+    m_fila = fil;
     setWindowTitle(QString("%1[*] - %2")
-                       .arg(m_fileName.isNull()?"Безымянный":QFileInfo(m_fileName).fileName())
+                       .arg(m_fila.isNull()?"Безымянный":QFileInfo(m_fila).fileName())
                        .arg(QApplication::applicationName())
     );
 
@@ -133,30 +133,30 @@ void TextEditor::on_actionOpen_triggered()
         return;
     }
 
-    if (m_fileName.isNull() && !isWindowModified()){
-        loadFile(fil);
+    if (m_fila.isNull() && !isWindowModified()){
+        lida(fil);
     } else {
         auto newWindow = new TextEditor(fil);
         newWindow->show();
     }
 }
 
-bool TextEditor::saveFileAs(){
+bool TextEditor::svFlAs(){
     QString fil = QFileDialog::getSaveFileName(this, "Сохранить документ",
-                                                    m_fileName.isNull()?QDir::currentPath():m_fileName, "Текстовые файлы(*.txt)");
+                                                    m_fila.isNull()?QDir::currentPath():m_fila, "Текстовые файлы(*.txt)");
     if (fil.isNull()){
         return false;
     }
     setFileName(fil);
-    return saveFile();
+    return svFl();
 }
 
-bool TextEditor::saveFile(){
-    if (m_fileName.isNull()){
-        return saveFileAs();
+bool TextEditor::svFl(){
+    if (m_fila.isNull()){
+        return svFlAs();
     }
 
-    QFile file(m_fileName);
+    QFile file(m_fila);
 
     if (!file.open(QIODevice::WriteOnly  | QIODevice::Text)){
         QMessageBox::warning(this, "Предупреждение", "Невозможно");
