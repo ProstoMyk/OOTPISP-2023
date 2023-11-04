@@ -1,5 +1,5 @@
-#ifndef CUSTOMWIDGET_H
-#define CUSTOMWIDGET_H
+#ifndef CUSTOMWIDGET_H//_8
+#define CUSTOMWIDGET_H//_8
 //210665
 #include <QWidget>//210665
 #include <QPainter>//210665
@@ -18,7 +18,7 @@ signals:
 private slots:
     void update_pos();
 protected:
-    void paintEvent(QPaintEvent*);
+    void paintEvent(QPaintEvent*);//_8
 private:
     qreal offX = 0;
     qreal offY = 0;

@@ -1,4 +1,4 @@
-#include "customwidget.h"
+#include "customwidget.h"//_8
 const QString CustomWidget::label_ = "Граф. примитивы в библиотеке QT";
 const QFont CustomWidget::serifFont("Times", 10, QFont::Bold);
 const int CustomWidget::timer_interval = 9; // milisec
