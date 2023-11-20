@@ -1,4 +1,4 @@
-#include "Textid.h"
+#include "texteditor.h"
 #include "ui_texteditor.h"
 
 TextEditor::TextEditor(const QString &fil, QWidget *parent)
