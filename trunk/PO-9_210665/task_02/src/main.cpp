@@ -1,4 +1,4 @@
-#include "Textid.h" //210665
+#include "texteditor.h" //210665
 #include <QApplication>  //210665
 int main(int argc, char *argv[]) //210665
 {
