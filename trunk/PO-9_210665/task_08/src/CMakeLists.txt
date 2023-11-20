@@ -14,4 +14,4 @@ add_executable(po9_210665_08
         customwidget.h
         customwidget.cpp
 )
-target_link_libraries(po9_210665_07 Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(po9_210665_08 Qt${QT_VERSION_MAJOR}::Widgets)
