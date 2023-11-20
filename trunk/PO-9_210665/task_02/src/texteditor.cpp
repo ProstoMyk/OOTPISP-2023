@@ -98,14 +98,14 @@ void TextEditor::on_actionSelectFont_triggered()
 
 void TextEditor::lida(const QString &fil){
     if (fil.isEmpty()){
-        setFileName(QString());
+        setfila(QString());
         return;
     }
     QFile file(fil);
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)){
         QMessageBox::warning(this, "Предупреждение", "Невозможно открыть этот файл");
-        setFileName(QString());
+        setfila(QString());
         return;
     }
 
@@ -113,7 +113,7 @@ void TextEditor::lida(const QString &fil){
     ui->textEdit->setText(in.readAll());
 
     file.close();
-    setFileName(fil);
+    setfila(fil);
     setWindowModified(false);
 }
 
@@ -147,7 +147,7 @@ bool TextEditor::svFlAs(){
     if (fil.isNull()){
         return false;
     }
-    setFileName(fil);
+    setfila(fil);
     return svFl();
 }
 
@@ -160,7 +160,7 @@ bool TextEditor::svFl(){
 
     if (!file.open(QIODevice::WriteOnly  | QIODevice::Text)){
         QMessageBox::warning(this, "Предупреждение", "Невозможно");
-        setFileName(QString());
+        setfila(QString());
         return false;
     }
 

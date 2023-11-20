@@ -1,5 +1,5 @@
-#ifndef TEXTID_H
-#define TEXTID_H
+#ifndef TEXTEDITOR_H
+#define TEXTEDITOR_H
 
 #include <QMainWindow>//inck
 #include <QCloseEvent>//inck
@@ -44,4 +44,4 @@ private:
     Ui::TextEditor *ui;
     QString m_fila;
 };
-#endif // TEXTID_H
+#endif // TEXTEDITOR_H
