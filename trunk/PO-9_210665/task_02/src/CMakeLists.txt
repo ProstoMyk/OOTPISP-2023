@@ -8,9 +8,9 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 add_executable(task_02_210665
         main.cpp
-        Textid.cpp
+        texteditor.h
+        texteditor.cpp
         texteditor.ui
-        Textid.h
         icons.qrc
 )
 target_link_libraries(task_02_210665 Qt${QT_VERSION_MAJOR}::Widgets)

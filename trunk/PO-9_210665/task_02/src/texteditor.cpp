@@ -1,6 +1,5 @@
 #include "texteditor.h"
 #include "ui_texteditor.h"
-
 TextEditor::TextEditor(const QString &fil, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::TextEditor)
