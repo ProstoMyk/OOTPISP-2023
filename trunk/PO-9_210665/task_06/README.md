@@ -45,6 +45,94 @@ submodule path 'D:/AUF3/OOP/task_06/proga/googletest' failed
 
 ![image](images/11.png)
 
+Диаграмма как есть, но Mermaid:
+
+```mermaid
+---
+title: Abstract Factory
+---
+classDiagram
+    conBody <|-- Body
+    conHead <|-- Head
+    conEnding <|-- Ending
+    SingletonFactory <|-- AbstractFactory
+    Factory <|-- AbstractFactory
+    AbstractPrototypeFactory <|-- AbstractFactory
+    AbstractPrototypeFactory o-- Head
+    AbstractPrototypeFactory o-- Body
+    AbstractPrototypeFactory o-- Ending
+    Factory <-- Head
+    Factory <-- Body
+    Factory <-- Ending
+    SingletonFactory <-- Head
+    SingletonFactory <-- Body
+    SingletonFactory <-- Ending
+
+    class Head {
+    +virtual render()
+    +virtual clone()
+}
+
+class Body {
+    +virtual render()
+    +virtual clone()
+}
+
+class Ending {
+    +virtual render()
+    +virtual clone()
+}
+
+class conHead{
+    +render()
+    +clone()
+}
+
+class conBody{
+    +render()
+    +clone()
+}
+
+class conEnding{
+    +render()
+    +clone()
+}
+
+
+
+class AbstractFactory {
+    +virtual Head* createHead()
+    +virtual Body* createBody()
+    +virtual Ending* createEnding()
+}
+
+class AbstractPrototypeFactory{
+    +AbstractPrototypeFactory(Head* h,  Body* b, Ending* e)
+    +Head* createHead()
+    +Body* createBody()
+    +Ending* createEnding()
+    -Head* headPrototype
+    -Body* bodyPrototype
+    -Ending* endingPrototype
+}
+
+
+class Factory{
+    +Head* createHead()
+    +Body* createBody()
+    +Ending* createEnding()
+}
+
+
+class SingletonFactory{
+    -static SingletonFactory* instance
+    +static SingletonFactory* getInstance()
+    +Head* createHead()
+    +Body* createBody()
+    +Ending* createEnding()
+}
+```
+
 ## Вывод ##
 
 Не сильно разобрался ибо слишком витееватые должны выходить диаграммы.
