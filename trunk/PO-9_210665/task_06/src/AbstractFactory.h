@@ -26,35 +26,23 @@ public:
 
 class conHead : public Head {
 public:
-    void render() const override {
-        std::cout << "head otchete" << std::endl;
-    }
+    void render() const override;
 
-    Head* clone() override {
-        return new conHead();
-    }
+    Head* clone() override;
 };
 
 class conBody : public Body {
 public:
-    void render() const override {
-        std::cout << "body otcheta" << std::endl;
-    }
+    void render() const override;
 
-    Body* clone() override {
-        return new conBody();
-    }
+    Body* clone() override;
 };
 
 class conEnding : public Ending {
 public:
-    void render() const override {
-        std::cout << "Ending otcheta" << std::endl;
-    }
+    void render() const override;
 
-    Ending* clone() override {
-        return new conEnding();
-    }
+    Ending* clone() override;
 };
 
 
@@ -69,29 +57,15 @@ public:
 
 class AbstractPrototypeFactory : public AbstractFactory {
 public:
-    AbstractPrototypeFactory(Head* h,  Body* b, Ending* e) {
-        headPrototype = h;
-        bodyPrototype = b;
-        endingPrototype = e;
-    }
+    AbstractPrototypeFactory(Head* h,  Body* b, Ending* e);
 
-    virtual ~AbstractPrototypeFactory() {
-        delete headPrototype;
-        delete bodyPrototype;
-        delete endingPrototype;
-    }
+    virtual ~AbstractPrototypeFactory();
 
-    Head* createHead() const override {
-        return headPrototype->clone();
-    }
+    Head* createHead() const override;
 
-    Body* createBody() const override {
-        return bodyPrototype->clone();
-    }
+    Body* createBody() const override;
 
-    Ending* createEnding() const override {
-        return endingPrototype->clone();
-    }
+    Ending* createEnding() const override;
 private:
     Head* headPrototype;
     Body* bodyPrototype;
@@ -101,46 +75,27 @@ private:
 
 class Factory : public AbstractFactory {
 public:
-    Head* createHead() const override {
-        return new conHead();
-    }
-
-    Body* createBody() const override {
-        return new conBody();
-    }
-
-    Ending* createEnding() const override {
-        return new conEnding();
-    }
+    Head* createHead() const override;
+    Body* createBody() const override;
+    Ending* createEnding() const override;
 };
 
 
 class SingletonFactory : public AbstractFactory {
 private:
-    SingletonFactory() {}
-    static SingletonFactory* instance;
+    SingletonFactory();
+     SingletonFactory* instance;
 
 public:
-    static SingletonFactory* getInstance() {
-        if (instance == nullptr) {
-            instance = new SingletonFactory();
-        }
-        return instance;
-    }
+     SingletonFactory* getInstance();
 
-    Head* createHead() const override {
-        return new conHead();
-    }
+    Head* createHead() const override;
 
-    Body* createBody() const override {
-        return new conBody();
-    }
+    Body* createBody() const override;
 
-    Ending* createEnding() const override {
-        return new conEnding();
-    }
+    Ending* createEnding() const override;
 };
 
-SingletonFactory* SingletonFactory::instance = nullptr;
+//SingletonFactory* SingletonFactory::instance = nullptr;
 
 #endif // ABSTRACTFACTORY_H
